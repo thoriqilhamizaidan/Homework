@@ -9,7 +9,7 @@ function Song(props){
           <h1>{props.title}</h1>
           <h2>Album : {props.album}</h2>
           <h2>Artist : {props.artist}</h2>
-          <button class="btn">Select</button>
+          <button class="btn select">Select</button>
       </div>
     </div>
     
