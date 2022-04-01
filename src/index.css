@@ -40,12 +40,14 @@ form{
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
+  text-align: center;
 }
 
 .login{
   background-color: rgb(221, 221, 221);
   padding: 2px 10px;
   margin-right: 2px;
+  text-align: center;
 }
 
 .logout{
