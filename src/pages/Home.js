@@ -6,28 +6,31 @@ import Button from '../components/Button';
 import CreatePlaylistSpotify from '../components/CreatePlaylistSpotify';
 import { getUserProfile } from '../lib/fetchApi.js';
 import { toast } from 'react-toastify';
+import { useDocumentTitle } from '../lib/customHooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../slice/authSlice';
 
 export default function Home() {
-  const [accessToken, setAccessToken] = useState('');
-  const [isAuthorize, setIsAuthorize] = useState(false);
   const [tracks, setTracks] = useState([]);
   const [selectedTracksUri, setSelectedTracksUri] = useState([]);
   const [selectedTracks, setSelectedTracks] = useState([]);
   const [isInSearch, setIsInSearch] = useState(false);
-  const [user, setUser] = useState({});
+  const isAuthorize = useSelector((state) => state.auth.isAuthorize);
+  const dispatch = useDispatch();
+
+   useDocumentTitle('Home - Spotify');
 
   useEffect(() => {
     const accessTokenParams = new URLSearchParams(window.location.hash).get('#access_token');
 
     if (accessTokenParams !== null) {
-      setAccessToken(accessTokenParams);
-      setIsAuthorize(accessTokenParams !== null);
-
       const setUserProfile = async () => {
         try {
-          const response = await getUserProfile(accessTokenParams);
-
-          setUser(response);
+          const responseUser = await getUserProfile(accessTokenParams);
+          dispatch(login({
+            accessToken: accessTokenParams,
+            user: responseUser
+          }));
         } catch (e) {
           toast.error(e);
         }
@@ -85,16 +88,12 @@ export default function Home() {
 
       {isAuthorize && (
         <main className="container" id="home">
-          <CreatePlaylistSpotify
-            accessToken={accessToken}
-            userId={user.id}
-            uriTracks={selectedTracksUri}
+          <CreatePlaylistSpotify uriTracks={selectedTracksUri}
           />
 
           <hr />
 
           <SearchBar
-            accessToken={accessToken}
             onSuccess={onSuccessSearch}
             onClearSearch={clearSearch}
           />
