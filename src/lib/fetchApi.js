@@ -10,7 +10,6 @@ export const searchTrack = async (query, accessToken) => {
   };
 
   const response = await axios.get(`${config.SPOTIFY_BASE_URL}/search?type=track&q=${query}`, requestOptions);
-
   return response.data;
 }
 
@@ -33,7 +32,7 @@ export const createPlaylist = async (accessToken, userId, { name, description })
     description,
     public: false,
     collaborative: false,
-  })
+  });
   
   const requestOptions = {
     headers: {

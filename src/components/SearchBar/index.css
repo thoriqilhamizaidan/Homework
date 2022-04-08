@@ -1,15 +1,17 @@
 .form-search {
     display: flex;
     gap: 20px;
-    width: 100%;
+    width: 95%;
   }
   
   .form-search .form-search__input {
     flex: 1 1 100%;
+    border-radius: 10px;
   }
   
   .submit{
     display: inline-block;
+    margin: 0;
   }
   
   .box{

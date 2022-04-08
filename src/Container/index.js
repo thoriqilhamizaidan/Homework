@@ -1,36 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import Tracks from '../components/Tracks';
 import SearchBar from '../components/SearchBar';
-import config from '../lib/config';
 import Button from '../components/Button';
-import CreatePlaylistSpotify from '../components/CreatePlaylistSpotify';
+import CreatePlaylistForm from '../components/FormPlaylist';
 import { getUserProfile } from '../lib/fetchApi.js';
 import { toast } from 'react-toastify';
-import { useDocumentTitle } from '../lib/customHooks';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../slice/authSlice';
+import "./index.css";
 
 export default function Home() {
+  const [accessToken, setAccessToken] = useState('');
+  const [isAuthorize, setIsAuthorize] = useState(false);  
   const [tracks, setTracks] = useState([]);
   const [selectedTracksUri, setSelectedTracksUri] = useState([]);
   const [selectedTracks, setSelectedTracks] = useState([]);
   const [isInSearch, setIsInSearch] = useState(false);
-  const isAuthorize = useSelector((state) => state.auth.isAuthorize);
-  const dispatch = useDispatch();
-
-   useDocumentTitle('Home - Spotify');
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const accessTokenParams = new URLSearchParams(window.location.hash).get('#access_token');
 
     if (accessTokenParams !== null) {
+      setAccessToken(accessTokenParams);
+      setIsAuthorize(accessTokenParams !== null);
+
       const setUserProfile = async () => {
         try {
-          const responseUser = await getUserProfile(accessTokenParams);
-          dispatch(login({
-            accessToken: accessTokenParams,
-            user: responseUser
-          }));
+          const response = await getUserProfile(accessTokenParams);
+          setUser(response);
         } catch (e) {
           toast.error(e);
         }
@@ -47,7 +43,9 @@ export default function Home() {
   }, [selectedTracksUri, selectedTracks, isInSearch]);
 
   const getSpotifyLinkAuthorize = () => {
-    const clientId = "d3fe14e1ee5847bcaea6301c95120ce1";
+    const state = Date.now().toString();
+    const clientId = "c3674ca69601470ebbf98c96ec75c3bd";
+
     return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=http://localhost:3000/`;
   }
 
@@ -81,19 +79,23 @@ export default function Home() {
     <>
       {!isAuthorize && (
         <main className="center">
-          <h2>Login for The Next...</h2>
-          <Button href={getSpotifyLinkAuthorize()}>Authorize</Button>
+          <p>Login your accounts</p>
+          <Button href={getSpotifyLinkAuthorize()}>Login</Button>
         </main>
       )}
 
       {isAuthorize && (
         <main className="container" id="home">
-          <CreatePlaylistSpotify uriTracks={selectedTracksUri}
+          <CreatePlaylistForm
+            accessToken={accessToken}
+            userId={user.id}
+            uriTracks={selectedTracksUri}
           />
 
           <hr />
 
           <SearchBar
+            accessToken={accessToken}
             onSuccess={onSuccessSearch}
             onClearSearch={clearSearch}
           />

@@ -1,24 +1,30 @@
-import React from 'react'
-import './index.css'
-import PropTypes from 'prop-types'
+import React from 'react';
+import './index.css';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-export default function Button({ children, type, variant, className, onClick, href }) {
-  const classButton = ['btn']
+export default function Button({ children, type, variant, className, onClick, href, external }) {
+  const classButton = ['btn'];
 
   
   if (variant !== 'primary') {
-    classButton.push(`btn--${variant}`)
+    classButton.push(`btn--${variant}`);
   }
 
   if (className !== '') {
-    classButton.push(className)
+    classButton.push(className);
   }
 
   if (href) {
-    classButton.push('btn--link')
+    classButton.push('btn--link');
+    if (external) {
+      return (
+        <a href={href} className={classButton.join(' ')}>{children}</a>
+      )
+    }
 
     return (
-      <a href={href} className={classButton.join(' ')}>{children}</a>
+      <link to={href} className={classButton.join(' ')}>{children}</link>
     )
   }
 
@@ -33,7 +39,7 @@ Button.defaultProps = {
   variant: 'primary',
   onClick: null,
   href: null,
-}
+};
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
@@ -42,4 +48,4 @@ Button.propTypes = {
   variant: PropTypes.oneOf(['primary', 'secondary', 'text']),
   onClick: PropTypes.func,
   href: PropTypes.string,
-}
+};

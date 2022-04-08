@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'react-toastify/dist/ReactToastify.css';
-import App from './App';
 import { ToastContainer } from 'react-toastify';
+import App from './App';
 import { Provider } from 'react-redux';
 import store from './store';
 

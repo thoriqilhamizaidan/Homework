@@ -1,38 +1,45 @@
 .input {
-    min-height: 44px;
+    height: 30px;
     border: 1px solid var(--gray);
-    border-radius: 30px;
-    padding: 4px 16px;
+    border-radius: 10px;
+    padding: 4px 10px;
+    width: 90%;
     outline: none;
     transition: border .2s ease-in-out;
+    float: left;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   
   .input:focus {
     border-color:#0ccc7c;
   }
   
-  .input--large {
-    height: 100px;
+  .inputDesc {
+    height: 60px;
     border-radius: 10px;
     resize: vertical;
+    justify-content: center;
   }
   
-  .input--error, .input--error:focus {
+  .inputError, .inputError:focus {
     border-color: var(--red);
   }
   
-  .input-group {
+  .inputGroup {
     display: flex;
     flex-direction: column;
   }
   
-  .input-group label > span {
+  .inputGroup label > span {
     color: var(--red);
   }
   
-  .input-group__error {
+  .inputGroupError {
     font-size: 13px;
-    color: var(--red);
+    color: white;
+    margin: 20px;
   }
   
   .input-group__counter {

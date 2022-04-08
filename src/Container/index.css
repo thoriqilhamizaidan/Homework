@@ -1,0 +1,28 @@
+body{
+    background-color: rgb(37, 37, 37);
+}
+
+.container{
+    width: 50%;
+}
+
+.center p{
+    text-align: left;
+    color: white;
+}
+
+.btn-login{
+    float: left;
+    margin-right: 20px;
+    margin-top: -10px;
+}
+
+.content p {
+    color: white;
+    margin-left: 20px;
+}
+
+.tracks p{
+    color: black;
+    margin-left: 0;
+}

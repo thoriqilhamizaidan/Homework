@@ -1,5 +1,6 @@
 import React from 'react';
-import './index.css';
+import "./index.css";
+import PropTypes from 'prop-types'; 
 
 export default function Input({ label, id, onChange, type, error, value, required, className, ...props }) {
   const classInput = ['input'];
@@ -8,7 +9,7 @@ export default function Input({ label, id, onChange, type, error, value, require
   }
   
   if (error) {
-    classInput.push('input--error');
+    classInput.push('inputError');
   }
 
   let elementInput = (
@@ -24,7 +25,7 @@ export default function Input({ label, id, onChange, type, error, value, require
   )
 
   if (type === 'textarea') {
-    classInput.push('input--large');
+    classInput.push('inputDesc');
     elementInput = (
       <textarea
         id={id}
@@ -43,7 +44,26 @@ export default function Input({ label, id, onChange, type, error, value, require
       
       {elementInput}
 
-      {error && <span className="input-group__error">{error}</span>}
+      {error && <span className="inputGroupError">{error}</span>}
     </>
   )
 }
+
+Input.defaultProps = {
+  label: null,
+  type: 'text',
+  error: null,
+  required: false,
+  className: '',
+};
+
+Input.propTypes = {
+  label: PropTypes.string,
+  id: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  type: PropTypes.string,
+  error: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  required: PropTypes.bool,
+  className: PropTypes.string,
+}; 
