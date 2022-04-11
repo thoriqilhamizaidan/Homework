@@ -37,7 +37,7 @@ export default function FormPlaylist({ uriTracks }) {
     if (form.title.length < 10) {
       setErrorForm({
         ...errorForm,
-        title: 'Title must be at least 10 characters long'
+        title: 'Title must be at least 10 characters long',
       });
       isValid = false;
     }
@@ -45,7 +45,7 @@ export default function FormPlaylist({ uriTracks }) {
     if (form.description.length > 100) {
       setErrorForm({
         ...errorForm,
-        description: 'Description must be less than 100 characters long'
+        description: 'Description must be less than 100 characters long',
       });
       isValid = false;
     }

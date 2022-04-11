@@ -3,7 +3,7 @@ import './index.css';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-export default function Button({ children, type, variant, className, onClick, href, external }) {
+export default function Button({ children, type, variant, className, onClick, href, external, ...props }) {
   const classButton = ['btn'];
 
   
@@ -19,17 +19,36 @@ export default function Button({ children, type, variant, className, onClick, hr
     classButton.push('btn--link');
     if (external) {
       return (
-        <a href={href} className={classButton.join(' ')}>{children}</a>
+        <a
+          href={href}
+          className={classButton.join(' ')}
+          {...props}
+        >
+          {children}
+        </a>
       )
     }
 
     return (
-      <link to={href} className={classButton.join(' ')}>{children}</link>
+      <Link
+        to={href}
+        className={classButton.join(' ')}
+        {...props}
+      >
+        {children}
+      </Link>
     )
   }
 
   return (
-    <button type={type} className={classButton.join(' ')} onClick={onClick}>{children}</button>
+    <button
+      type={type}
+      className={classButton.join(' ')}
+      onClick={onClick}
+      {...props}
+    >
+      {children}
+    </button>
   )
 }
 

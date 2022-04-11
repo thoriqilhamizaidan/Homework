@@ -2,8 +2,21 @@ import React from 'react';
 import "./index.css";
 import PropTypes from 'prop-types'; 
 
-export default function Input({ label, id, onChange, type, error, value, required, className, ...props }) {
+function ElementInput({ type, ...props }) {
+  if (type === 'textarea') {
+    return <textarea {...props} />
+  }
+
+  return <input type={type} {...props} />
+}
+
+export default function Input({ label, id, required, type, error, className, ...props }) {
+
   const classInput = ['input'];
+  if (type === 'textarea') {
+    classInput.push('input--large');
+  }
+
   if (className) {
     classInput.push(className);
   }
@@ -12,38 +25,18 @@ export default function Input({ label, id, onChange, type, error, value, require
     classInput.push('inputError');
   }
 
-  let elementInput = (
-    <input
-        type={type}
-        id={id}
-        onChange={onChange}
-        required={required}
-        className={classInput.join(' ')}
-        value={value}
-        {...props}
-      />
-  )
-
-  if (type === 'textarea') {
-    classInput.push('inputDesc');
-    elementInput = (
-      <textarea
-        id={id}
-        className={classInput.join(' ')}
-        onChange={onChange}
-        value={value}
-        required={required}
-        {...props}
-      />
-    )
-  }
-
   return (
     <>
       {label && <label htmlFor={id}>{label}{required && <span>*</span>}</label>}
-      
-      {elementInput}
 
+      <ElementInput
+        type={type}
+        id={id}
+        className={classInput.join(' ')}
+        
+        required={required}
+        {...props}
+      />
       {error && <span className="inputGroupError">{error}</span>}
     </>
   )

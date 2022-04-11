@@ -47,7 +47,7 @@ import { logout } from '../../TokenSlice/index';
       <form className="form-search" onSubmit={handleSubmit}>
         <Input
           type="text"
-          placeholder="Search..."
+          placeholder="Search song..."
           className="form-search__input"
           required
           value={text}
@@ -66,4 +66,4 @@ import { logout } from '../../TokenSlice/index';
 SearchBar.propTypes = {
   onSuccess: PropTypes.func.isRequired,
   onClearSearch: PropTypes.func.isRequired,
-}
+};

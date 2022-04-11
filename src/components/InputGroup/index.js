@@ -10,4 +10,4 @@ export default function InputGroup({ children }) {
 }
 InputGroup.propTypes = {
   children: PropTypes.node.isRequired,
-} 
+};

@@ -24,4 +24,4 @@ import React from 'react';
  GuardRoute.propTypes = {
    children: PropTypes.node.isRequired,
    type: PropTypes.oneOf(['guest', 'private']).isRequired,
- } 
+ };

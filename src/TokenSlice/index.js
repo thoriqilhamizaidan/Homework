@@ -9,7 +9,7 @@ import { createSlice } from '@reduxjs/toolkit';
    },
    reducers: {
      login: (state, action) => {
-      state.accessToken = action.payload.accessToken;
+      state.accessToken = state.accessToken;
       state.isAuthorized = true;
       state.user = action.payload.user;
 
@@ -24,6 +24,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
       localStorage.removeItem('accessToken');
       localStorage.removeItem('expiredDate');
+      localStorage.removeItem('user');
      }
    }
  });

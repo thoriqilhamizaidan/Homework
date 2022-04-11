@@ -22,7 +22,13 @@ export default function Track({ imageUrl, title, artist, select, toggleSelect })
           <p className="songArtist">{artist}</p>
       </div>
       <div className="songAction">
-          <Button className='btn' variant={isSelected ? 'primary' : 'secondary'} onClick={handleToggleSelect}>{isSelected ? 'Deselect' : 'Select'}</Button>
+      <Button
+        className="btn"
+        variant={isSelected ? 'primary' : 'secondary'}
+        onClick={handleToggleSelect}
+      >
+        {isSelected ? 'Deselect' : 'Select'}
+      </Button>
       </div>
     </div>
   );
@@ -33,4 +39,5 @@ Track.propTypes = {
   title: PropTypes.string.isRequired,
   artist: PropTypes.string.isRequired,
   toggleSelect: PropTypes.func.isRequired,
-}
+  select: PropTypes.bool.isRequired,
+};
