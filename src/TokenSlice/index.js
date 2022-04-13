@@ -9,11 +9,11 @@ import { createSlice } from '@reduxjs/toolkit';
    },
    reducers: {
      login: (state, action) => {
-      state.accessToken = state.accessToken;
+      state.accessToken = action.payload.accessToken;
       state.isAuthorized = true;
       state.user = action.payload.user;
 
-      localStorage.setItem('accessToken', action.payload.accessToken);
+      localStorage.setItem('accessToken', state.accessToken);
       localStorage.setItem('expiredDate', action.payload.expiredDate);
       localStorage.setItem('user', JSON.stringify(state.user));
     },

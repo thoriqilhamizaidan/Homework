@@ -44,10 +44,11 @@ import { logout } from '../../TokenSlice/index';
 
   return (
     <div>
+      <h4>Search Song</h4>
       <form className="form-search" onSubmit={handleSubmit}>
         <Input
           type="text"
-          placeholder="Search song..."
+          placeholder="Search..."
           className="form-search__input"
           required
           value={text}
@@ -57,7 +58,7 @@ import { logout } from '../../TokenSlice/index';
       </form>
 
       {!isClear && (
-        <Button variant="text" onClick={handleClear} className="mt-1">Clear search</Button>
+        <Button variant="text" onClick={handleClear} className="btn--clear">Clear search</Button>
       )}
     </div>
   )

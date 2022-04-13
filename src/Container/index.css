@@ -6,13 +6,27 @@ body{
     width: 50%;
 }
 
-.center p{
-    text-align: left;
+.auth{
+    background-color: black;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 10px auto;
+    padding: 50px;
+    width: 50%;
+}
+
+.auth p{
+    text-align: center;
     color: white;
 }
 
-.btn-login{
-    float: left;
+.auth .btn-login{
+    
+    text-align: center;
     margin-right: 20px;
     margin-top: -10px;
 }

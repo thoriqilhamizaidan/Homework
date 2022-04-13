@@ -44,7 +44,7 @@ export default function Auth() {
   }
 
   return (
-    <main className="center">
+    <main className="auth">
       <p>Login your account</p>
       <Button className='btn-login' href={getSpotifyLinkAuthorize()} external>Login</Button>
     </main>

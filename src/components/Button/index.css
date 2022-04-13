@@ -1,5 +1,5 @@
 .btn {
-    background-color: #00c023;
+    background-color: #3f20f1;
     border: none;
     color: rgb(0, 0, 0);
     padding-top: 5px;
@@ -23,23 +23,23 @@
   }
   
   .btn:hover {
-    background-color: #00ff2f;
+    background-color: #2812a2;
   }
   
   .btn--secondary {
-    color: var(--green);
-    border: 1px solid var(--green);
-    background-color: #00c023;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    background-color: #3f20f1;
   }
   
   .btn--secondary:hover {
-    background-color: #00ff2f;
+    background-color: #3f20f1;
     color: #000000;
   }
   
   .btn--text {
     color: #000000;
-    background-color: #00c023;
+    background-color: #3016c3;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 24px;
@@ -48,5 +48,5 @@
   }
   
   .btn--text:hover {
-    background-color: #00ff2f;
+    background-color: #3f20f1;
   }
