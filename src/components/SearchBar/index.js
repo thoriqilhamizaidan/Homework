@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from '../Button';
+import {Button} from '@chakra-ui/react';
 import './index.css';
 import PropTypes from 'prop-types';
 import Input from '../Input';
@@ -54,11 +54,11 @@ import { logout } from '../../TokenSlice/index';
           value={text}
           onChange={handleInput}
         />
-        <Button type="submit">Search</Button>
+        <Button mt='2' colorScheme='green' style={{ borderRadius: 8 }} type="submit">Search</Button>
       </form>
 
       {!isClear && (
-        <Button variant="text" onClick={handleClear} className="btn--clear">Clear search</Button>
+        <Button mb='2' ml='5' colorScheme='green' style={{ borderRadius: 8 }} onClick={handleClear} className="btn--clear">Clear search</Button>
       )}
     </div>
   )

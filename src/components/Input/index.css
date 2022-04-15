@@ -1,51 +1,50 @@
 .input {
-    height: 30px;
-    border: 1px solid var(--gray);
-    border-radius: 10px;
-    padding: 4px 10px;
-    width: 90%;
-    outline: none;
-    transition: border .2s ease-in-out;
-    float: left;
-    margin-left: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .input:focus {
-    border-color:#0ccc7c;
-  }
-  
-  .inputDesc {
-    height: 60px;
-    border-radius: 10px;
-    resize: vertical;
-    justify-content: center;
-  }
-  
-  .inputError, .inputError:focus {
-    border-color: var(--red);
-  }
-  
-  .inputGroup {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .inputGroup label > span {
-    color: var(--red);
-  }
-  
-  .inputGroupError {
-    font-size: 13px;
-    color: white;
-    margin: 20px;
-  }
-  
-  .input-group__counter {
-    color: var(--gray);
-  }
-  
-  .input-group__counter--error {
-    color: var(--red);
-  }
+  height: 30px;
+  border: 1px solid var(--gray);
+  padding: 4px 10px;
+  width: 90%;
+  outline: none;
+  transition: border .2s ease-in-out;
+  float: left;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.input:focus {
+  border-color:#0ccc7c;
+}
+
+.inputDesc {
+  height: 60px;
+  border-radius: 10px;
+  resize: vertical;
+  justify-content: center;
+}
+
+.inputError, .inputError:focus {
+  border-color: var(--red);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup label > span {
+  color: var(--red);
+}
+
+.inputGroupError {
+  font-size: 13px;
+  color: white;
+  margin: 20px;
+}
+
+.input-group__counter {
+  color: var(--gray);
+}
+
+.input-group__counter--error {
+  color: var(--red);
+}

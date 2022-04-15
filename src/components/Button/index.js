@@ -3,9 +3,9 @@ import './index.css';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+
 export default function Button({ children, type, variant, className, onClick, href, external, ...props }) {
   const classButton = ['btn'];
-
   
   if (variant !== 'primary') {
     classButton.push(`btn--${variant}`);

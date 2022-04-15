@@ -1,18 +1,13 @@
-.create-playlist-form h2{
-    color: white;
-    text-align: center;
+h1{
+  text-align: center;
+  margin: 10px;
+  font-size: 25px;
 }
 
-.create-playlist-form label{
-    color: white;
-    margin: 20px;
+label{
+  margin: 5px 20px;
 }
 
-.create-playlist-form  {
-  color: white;
-  margin: 20px;
-}
-
-Button {
-  margin-left: 20px;
+Input{
+color: black;
 }

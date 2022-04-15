@@ -2,12 +2,20 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { addTracksToPlaylist, createPlaylist } from '../../lib/fetchApi';
-import Button from '../Button';
+//import Button from '../Button';
 import Input from '../Input';
-import InputGroup from '../InputGroup';
+//import InputGroup from '../InputGroup';
 import './index.css';
 import PropTypes from 'prop-types';
 import { logout } from '../../TokenSlice/index';
+import { 
+  Button,
+  FormControl,
+  FormLabel,
+  Center,
+  Box,
+} from '@chakra-ui/react';
+import { InputGroup } from 'react-bootstrap';
 
 export default function FormPlaylist({ uriTracks }) {
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -24,7 +32,7 @@ export default function FormPlaylist({ uriTracks }) {
     description: '',
   });
 
-  const handleChange = (e) => {
+  const handleForm = (e) => {
     const { name, value } = e.target;
 
     setForm({ ...form, [name]: value });
@@ -83,43 +91,49 @@ export default function FormPlaylist({ uriTracks }) {
   }
 
   return (
-    <div className="create-playlist-form">
-      <div>
-        <h2>Create Playlist</h2>
+    <Center>
+        <Box w="sm">
+        <h1>Create Playlist</h1>
 
-        <form className="form form-playlist" onSubmit={handleSubmit}>
-          <InputGroup>
+        <form onSubmit={handleSubmit}>
+          <FormControl>
+            <FormLabel htmlFor='title'>Title</FormLabel>
+            <InputGroup>
             <Input
-              label="Title"
-              placeholder="Title of playlist"
+              type="text"
+              placeholder="Title"
               value={form.title}
               id="title-playlist"
               name="title"
-              onChange={handleChange}
+              onChange={handleForm}
               error={errorForm.title}
               required
+              style={{ borderRadius: 8 }}
             />
-          </InputGroup>
-          <InputGroup>
+            </InputGroup>
+          </FormControl>
+          <FormControl>
+            <FormLabel htmlFor="title">Description</FormLabel>
+            <InputGroup>
             <Input
-              type='textarea'
-              label="Description"
-              placeholder="Description of playlist"
+              color='black'
+              type='text'
+              placeholder="Description"
               value={form.description}
               id="description-playlist"
               name="description"
-              onChange={handleChange}
+              onChange={handleForm}
               required
               error={errorForm.description}
+              style={{ borderRadius: 8 }}
+              
             />
-          </InputGroup>
-
-          <div className="form-playlist__action">
-            <Button type="submit">Create</Button>
-          </div>
+            </InputGroup>
+          </FormControl>
+          <Button ml="5" mb="3" width='90%' colorScheme='green' variant="solid" style={{ borderRadius: 8 }}  >Create</Button>
         </form>
-      </div>
-    </div>
+      </Box>
+    </Center>
   )
 }
 
